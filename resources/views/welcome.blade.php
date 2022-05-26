@@ -72,9 +72,10 @@
         @if (Route::has('login'))
             <div class="top-right links">
                 @auth
+                    <a href="http://127.0.0.1:8000/api/posts">FrontOffice Posts</a>
                     <a href="{{ route('admin.posts.index') }}">Listing Posts</a>
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
+                                    document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
