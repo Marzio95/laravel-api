@@ -41,10 +41,8 @@ import PostShow from './pages/PostShow.vue';
 Vue.use(VueRouter);
 // import Axios from 'axios';
 
-const app = new Vue({
-    el: '#app',
-    render: h => h(App),
-    router: new VueRouter({
+
+   const router = new VueRouter({
         routes: [
             {
                 path: '/',
@@ -64,10 +62,16 @@ const app = new Vue({
             {
                 path: '/blog/:slug',
                 name: 'PostShow',
-                component: PostShow
+                component: PostShow,
+                props: true,
             },
         ]
-    }),
+    });
+
+const app = new Vue({
+    el: '#app',
+    render: h => h(App),
+    router,
 });
 
 
