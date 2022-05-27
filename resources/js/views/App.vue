@@ -1,7 +1,7 @@
 <template>
   <div>
       <HeaderMain />
-      <ContainerPost />
+      <router-view></router-view>
   </div>
 </template>
 

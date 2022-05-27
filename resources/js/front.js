@@ -33,9 +33,9 @@ import Vue from 'vue';
  */
 import VueRouter from 'vue-router';
 import App from './views/App.vue';
-import PageHome from './pages/Home.vue';
-import PageAbout from './pages/About.vue';
-import PostIndex from './pages/Index.vue';
+import PageHome from './pages/PageHome.vue';
+import PageAbout from './pages/PageAbout.vue';
+import PostIndex from './pages/PostIndex.vue';
 import PostShow from './pages/PostShow.vue';
 
 Vue.use(VueRouter);
