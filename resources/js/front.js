@@ -12,6 +12,7 @@ window.Vue = require('vue');
 window.Axios = require('axios');
 
 
+import Vue from 'vue';
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -30,18 +31,47 @@ window.Axios = require('axios');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
+import VueRouter from 'vue-router';
 import App from './views/App.vue';
+import PageHome from './pages/Home.vue';
+import PageAbout from './pages/About.vue';
+import PostIndex from './pages/Index.vue';
+import PostShow from './pages/PostShow.vue';
+
+Vue.use(VueRouter);
 // import Axios from 'axios';
 
 const app = new Vue({
     el: '#app',
     render: h => h(App),
+    router: new VueRouter({
+        routes: [
+            {
+                path: '/',
+                name: 'home',
+                component: PageHome
+            },
+            {
+                path: '/about',
+                name: 'about',
+                component: PageAbout
+            },
+            {
+                path: '/blog',
+                name: 'PostIndex',
+                component: PostIndex
+            },
+            {
+                path: '/blog/:slug',
+                name: 'PostShow',
+                component: PostShow
+            },
+        ]
+    }),
 });
 
 
 // const app = new Vue({
 //     el: '#app',
 // });
-
 
