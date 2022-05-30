@@ -1,4 +1,5 @@
 <template>
+<div class="body_form">
   <form action="/mail" class="row g-3">
         <div class="form-group col-md-6">
             <label for="name">Name</label>
@@ -16,6 +17,7 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </form>
+</div>
 </template>
 
 <script>
@@ -26,5 +28,9 @@ export default {
 </script>
 
 <style>
+.body_form {
+    width: 80%;
+    margin: 0 auto;
+}
 
 </style>

@@ -3,6 +3,7 @@
         <router-link class="router-link" :to="{ name:'home'}">HOME</router-link>
         <router-link class="router-link" :to="{ name:'PostIndex'}">LISTING POSTS</router-link>
         <router-link class="router-link" :to="{ name:'about'}">ABOUT US</router-link>
+        <router-link class="router-link" :to="{ name:'PageContact'}">CONTACT US</router-link>
   </div>
 </template>
 
