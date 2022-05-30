@@ -1,0 +1,1 @@
+<?php /**PATH C:\Users\marzio\Desktop\BOOLEAN GITHUB\laravel-api\resources\views/admin/partials/footer.blade.php ENDPATH**/ ?>

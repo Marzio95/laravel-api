@@ -4,7 +4,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-// const { default: Axios } = require('axios');
+const { default: Axios } = require('axios');
 
 // require('./bootstrap');
 

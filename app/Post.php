@@ -19,6 +19,7 @@ class Post extends Model
         'slug',
         'user_id',
         'category_id',
+        'photo_post',
     ];
 
     public static function createSlug($originalString)

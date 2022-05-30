@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->text('postText');
             $table->string('slug');
             $table->timestamps();
+            $table->string('photo_post')->nullable();
         });
     }
 

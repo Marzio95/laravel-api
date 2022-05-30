@@ -5,7 +5,7 @@
 
 
 @section('pageMain')
-    <form class="m-auto w-75 mt-4" method="POST" action="{{ route('admin.posts.store') }}">
+    <form class="m-auto w-75 mt-4" method="POST" action="{{ route('admin.posts.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="form-group row">
             <label for="title" class="col-sm-2 col-form-label">Title</label>
@@ -33,6 +33,16 @@
             <div class="col-4">
                 <input class="btn-slugger" type="button" value="Genera il tuo slug">
             </div>
+        </div>
+
+        <div class="form-group row mt-3 mb-3">
+            <div class="mb-3">
+                <label for="photo_post" class="form-label">Select a Photo</label>
+                <input class="form-control" type="file" id="photo_post" name="photo_post">
+            </div>
+            @error('photo_post')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
 
         <select class="mt-3 mb-3" name="category_id" id="category_id">

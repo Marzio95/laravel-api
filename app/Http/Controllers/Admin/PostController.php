@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Category;
-use App\Http\Controllers\Controller;
+use App\Tag;
 use App\Post;
 use App\User;
-use App\Tag;
-use Illuminate\Support\Facades\Auth;
+use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -92,10 +93,13 @@ class PostController extends Controller
             'postText' => 'required|max:500',
             'slug' => 'required',
             'category_id' => 'required|exists:App\Category,id',
-            'tags' => 'exists:App\Tag,id'
+            'tags' => 'exists:App\Tag,id',
+            'photo_post' => 'nullable',
         ]);
 
         $formData = $request->all() + ['user_id' => Auth::user()->id];
+        $img_path = Storage::put('uploads', $formData['photo_post']);
+        $formData = ['photo_post' => $img_path] + $formData;
         $post = Post::create($formData);
         $post->tags()->attach($formData['tags']);
         return redirect()->route('admin.posts.show', $post->slug);
