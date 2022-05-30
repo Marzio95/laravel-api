@@ -5358,6 +5358,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       posts: [],
+      myGoodString: '200',
       baseApiUrl: 'http://localhost:8000/api/posts',
       nNewPage: null,
       prevPageUrl: null,
@@ -5386,6 +5387,13 @@ __webpack_require__.r(__webpack_exports__);
           _this.nLastPage = res.data.response.last_page;
           _this.nNewPage = null;
         });
+      }
+    },
+    cutString: function cutString($string) {
+      if ($string.length > this.myGoodString) {
+        return $string.substring(0, this.myGoodString) + '...';
+      } else {
+        return $string;
       }
     }
   }
@@ -29223,7 +29231,7 @@ var render = function () {
                 ]),
                 _vm._v(" "),
                 _c("p", { staticClass: "card-text" }, [
-                  _vm._v(_vm._s(post.postText)),
+                  _vm._v(_vm._s(_vm.cutString(post.postText))),
                 ]),
                 _vm._v(" "),
                 _c(

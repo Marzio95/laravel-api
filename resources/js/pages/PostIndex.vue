@@ -7,7 +7,7 @@
             <!-- <img class="card-img-top" src=".../100px180/" alt="Card image cap"> -->
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title text-uppercase">{{ post.title }}</h5>
-                    <p class="card-text">{{ post.postText }}</p>
+                    <p class="card-text">{{ cutString(post.postText) }}</p>
                      <router-link :to="{name: 'PostShow', params: {slug: post.slug}}" class="btn btn-primary mt-auto">Go to Post</router-link>
                 </div>
             </div>
@@ -57,6 +57,7 @@ name: 'ContainerPost',
 data() {
     return{
         posts:[],
+        myGoodString: '200',
 
         baseApiUrl: 'http://localhost:8000/api/posts',
 
@@ -88,9 +89,16 @@ methods: {
                     this.nCurrentPage = res.data.response.current_page;
                     this.nLastPage = res.data.response.last_page;
                     this.nNewPage = null;
-                });
-            }
+            }   );
         }
+    },        
+    cutString ($string) {
+        if ($string.length > this.myGoodString) {
+            return $string.substring(0, this.myGoodString) + '...';
+        } else {
+            return $string;
+        }
+    }        
     }
     
 }
