@@ -148,12 +148,19 @@ class PostController extends Controller
             'title' => 'required|max:20',
             'postText' => 'max:500',
             'slug' => ['required', Rule::unique('posts')->ignore($post)],
+            'photo_post' => 'nullable',
         ]);
 
         $formData = $request->all();
+
+        if (array_key_exists('photo_post', $formData)) {
+            Storage::delete($post->photo_post);
+            $img_path = Storage::put('uploads', $formData['photo_post']);
+            $formData = ['photo_post' => $img_path] + $formData;
+        }
         $post->update($formData);
         $post->tags()->sync($formData['tags']);
-        return redirect()->route('admin.posts.show', $post->slug);
+        return redirect()->route('admin.posts.show', $post->slug); 
     }
 
 

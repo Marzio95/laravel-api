@@ -37,6 +37,8 @@ import PageHome from './pages/PageHome.vue';
 import PageAbout from './pages/PageAbout.vue';
 import PostIndex from './pages/PostIndex.vue';
 import PostShow from './pages/PostShow.vue';
+import PageContact from './pages/PageContact.vue';
+
 
 Vue.use(VueRouter);
 // import Axios from 'axios';
@@ -64,6 +66,11 @@ Vue.use(VueRouter);
                 name: 'PostShow',
                 component: PostShow,
                 props: true,
+            },
+            {
+                path: '/mail',
+                name: 'PageContact',
+                component: PageContact,
             },
         ]
     });

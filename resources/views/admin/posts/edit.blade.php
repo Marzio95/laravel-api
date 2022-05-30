@@ -6,7 +6,8 @@
 
 
 @section('pageMain')
-    <form class="m-auto w-75 mt-4" method="POST" action="{{ route('admin.posts.update', $post->slug) }}">
+    <form enctype="multipart/form-data" class="m-auto w-75 mt-4" method="POST"
+        action="{{ route('admin.posts.update', $post->slug) }}">
         @csrf
         @method('PUT')
         <div class="form-group row">
@@ -19,6 +20,7 @@
                 @enderror
             </div>
         </div>
+
         <div class="form-group row mt-3 mb-3">
             <label for="slug" class="col-sm-2 col-form-label">slug</label>
             <div class="col-sm-10">
@@ -28,6 +30,17 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
+        </div>
+
+        <div class="form-group row mt-3 mb-3">
+            <div class="mb-3">
+                <label for="photo_post" class="form-label">Select a Photo</label>
+                <input accept="image/*" value="{{ old('photo_post', $post->photo_post) }}" class="form-control"
+                    type="file" id="photo_post" name="photo_post">
+            </div>
+            @error('photo_post')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
 
         <select class="mt-3 mb-3" name="category_id" id="category_id">

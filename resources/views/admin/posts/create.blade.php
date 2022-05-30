@@ -38,7 +38,7 @@
         <div class="form-group row mt-3 mb-3">
             <div class="mb-3">
                 <label for="photo_post" class="form-label">Select a Photo</label>
-                <input class="form-control" type="file" id="photo_post" name="photo_post">
+                <input accept="image/*" class="form-control" type="file" id="photo_post" name="photo_post">
             </div>
             @error('photo_post')
                 <div class="alert alert-danger">{{ $message }}</div>
