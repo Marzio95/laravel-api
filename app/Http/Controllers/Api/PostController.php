@@ -65,10 +65,11 @@ class PostController extends Controller
     {
         $post = Post::with(['user', 'category', 'tags'])->where('slug', $slug)->first();
         if ($post) {
+            $post->photo_post = asset('storage/' . $post->photo_post);
             return response()->json([
                 'success'   => true,
                 'response'  => [
-                    'data'      => $post,
+                    'data'      => $post
                 ]
             ]);
         } else {

@@ -2,6 +2,7 @@
 
     <div class="container">
         <div class="card p-3">
+            <img class="m-auto"  :src="post.photo_post" :alt="post.title">
             <h1 class="text-uppercase text-center">{{ post.title }}</h1>
             <h2 class="text-capitalize">From {{ post.user.name }}<span v-if="post.category"> in category {{ post.category.name }}</span></h2>
             <div class="tags">

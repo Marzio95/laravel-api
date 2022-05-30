@@ -5424,6 +5424,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PostShow',
   props: ['slug'],
@@ -29388,6 +29389,11 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "card p-3" }, [
+      _c("img", {
+        staticClass: "m-auto",
+        attrs: { src: _vm.post.photo_post, alt: _vm.post.title },
+      }),
+      _vm._v(" "),
       _c("h1", { staticClass: "text-uppercase text-center" }, [
         _vm._v(_vm._s(_vm.post.title)),
       ]),
