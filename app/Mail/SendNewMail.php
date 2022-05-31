@@ -16,9 +16,9 @@ class SendNewMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($lead)
     {
-        //
+        $this->lead = $lead;
     }
 
     /**
@@ -26,8 +26,8 @@ class SendNewMail extends Mailable
      *
      * @return $this
      */
-    public function build($lead)
+    public function build()
     {
-        return $this->view('admin.mails.email', compact('lead'));
+        return $this->view('admin.mails.email', [ 'lead' => $this->lead ]);
     }
 }

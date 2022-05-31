@@ -1,6 +1,6 @@
 <template>
 <div class="body_form">
-  <form action="/mail" class="row g-3">
+  <form @submit.prevent action="/mail" class="row g-3">
         <div class="form-group col-md-6">
             <label for="name">Name</label>
             <input type="text" class="form-control" id="name" placeholder="Name" name="name">
@@ -23,6 +23,25 @@
 <script>
 export default {
     name: 'PageContact',
+     data() {
+        return {
+            apiUrl: "/api/contact",
+            name: '',
+            email: '',
+            message: '',
+            statusMessage: ''
+        }
+    },
+    methods: {
+        sendMessage() {
+            Axios.post(this.apiUrl, {
+                name: this.name,
+                email: this.email,
+                message: this.message
+            })
+                .then(res => this.statusMessage = res.data.statusMessage);
+        }
+    }
 
 }
 </script>

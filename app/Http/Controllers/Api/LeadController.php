@@ -7,6 +7,7 @@ use App\Mail\SendNewMail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 class LeadController extends Controller
 {
@@ -38,15 +39,26 @@ class LeadController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $formData = $request->all();
+        $validator = Validator::make($formData, [
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
             'message' => 'required',
         ]);
 
-        $formData = $request->all();
-        $lead = Lead::create($formData);
-        Mail::to('smtp.mailtrap.io')->send(new SendNewMail($lead));
+        if ($validator->fails()) {
+            return response()->json([
+                'succes' => false,
+                'status' => 'error',
+                'errors' => $validator->errors()
+            ], 422);
+        } else {
+            $lead = Lead::create($formData);
+            Mail::to('smtp.mailtrap.io')->send(new SendNewMail($lead));
+    
+            return response()->json(['success' => 'Thank you for contacting us!']);
+        }
+
     }
 
     /**
