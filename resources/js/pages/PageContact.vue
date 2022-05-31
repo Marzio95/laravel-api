@@ -1,6 +1,6 @@
 <template>
 <div class="body_form">
-  <form @submit.prevent action="/mail" class="row g-3">
+  <form @submit.prevent="sendMessage" action="/api/contact" class="row g-3">
         <div class="form-group col-md-6">
             <label for="name">Name</label>
             <input type="text" class="form-control" id="name" placeholder="Name" name="name">

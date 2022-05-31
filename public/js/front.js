@@ -29275,10 +29275,11 @@ var render = function () {
       "form",
       {
         staticClass: "row g-3",
-        attrs: { action: "/mail" },
+        attrs: { action: "/api/contact" },
         on: {
           submit: function ($event) {
             $event.preventDefault()
+            return _vm.sendMessage.apply(null, arguments)
           },
         },
       },
