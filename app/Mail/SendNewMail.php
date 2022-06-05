@@ -28,6 +28,6 @@ class SendNewMail extends Mailable
      */
     public function build()
     {
-        return $this->view('admin.mails.email', [ 'lead' => $this->lead ]);
+        return $this->view('mails.email', [ 'lead' => $this->lead ]);
     }
 }

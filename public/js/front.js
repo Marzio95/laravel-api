@@ -5273,11 +5273,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PageContact',
   data: function data() {
     return {
-      apiUrl: "/api/contact",
+      apiUrl: "/api/mail",
       name: '',
       email: '',
       message: '',
@@ -5293,8 +5294,8 @@ __webpack_require__.r(__webpack_exports__);
         email: this.email,
         message: this.message
       }).then(function (res) {
-        return _this.statusMessage = res.data.statusMessage;
-      });
+        return _this.statusMessage = res.data.success;
+      }, this.name = '', this.email = '', this.message = '');
     }
   }
 });
@@ -29272,10 +29273,27 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "body_form" }, [
     _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.statusMessage,
+            expression: "statusMessage",
+          },
+        ],
+        staticClass: "alert alert-success mt-3",
+        attrs: { role: "alert" },
+      },
+      [_vm._v(_vm._s(_vm.statusMessage))]
+    ),
+    _vm._v(" "),
+    _c(
       "form",
       {
         staticClass: "row g-3",
-        attrs: { action: "/api/contact" },
+        attrs: { action: "/api/mail", method: "post" },
         on: {
           submit: function ($event) {
             $event.preventDefault()
@@ -29284,62 +29302,100 @@ var render = function () {
         },
       },
       [
+        _c("div", { staticClass: "form-group col-md-6" }, [
+          _c("label", { attrs: { for: "name" } }, [_vm._v("Name")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.name,
+                expression: "name",
+              },
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              id: "name",
+              placeholder: "Name",
+              name: "name",
+            },
+            domProps: { value: _vm.name },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.name = $event.target.value
+              },
+            },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group col-md-6" }, [
+          _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.email,
+                expression: "email",
+              },
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "email",
+              id: "email",
+              placeholder: "Email",
+              name: "email",
+            },
+            domProps: { value: _vm.email },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.email = $event.target.value
+              },
+            },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group col-md-12" }, [
+          _c("label", { attrs: { for: "message" } }, [_vm._v("Message")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.message,
+                expression: "message",
+              },
+            ],
+            staticClass: "form-control",
+            attrs: { id: "message", rows: "3", name: "message" },
+            domProps: { value: _vm.message },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.message = $event.target.value
+              },
+            },
+          }),
+        ]),
+        _vm._v(" "),
         _vm._m(0),
-        _vm._v(" "),
-        _vm._m(1),
-        _vm._v(" "),
-        _vm._m(2),
-        _vm._v(" "),
-        _vm._m(3),
       ]
     ),
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group col-md-6" }, [
-      _c("label", { attrs: { for: "name" } }, [_vm._v("Name")]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", id: "name", placeholder: "Name", name: "name" },
-      }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group col-md-6" }, [
-      _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: {
-          type: "email",
-          id: "email",
-          placeholder: "Email",
-          name: "email",
-        },
-      }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group col-md-12" }, [
-      _c("label", { attrs: { for: "message" } }, [_vm._v("Message")]),
-      _vm._v(" "),
-      _c("textarea", {
-        staticClass: "form-control",
-        attrs: { id: "message", rows: "3", name: "message" },
-      }),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement

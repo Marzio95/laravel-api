@@ -47,14 +47,14 @@ class LeadController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'succes' => false,
-                'status' => 'error',
-                'errors' => $validator->errors()
-            ], 422);
+            // return response()->json([
+            //     'succes' => false,
+            //     'status' => 'error',
+            //     'errors' => $validator->errors()
+            // ], 422);
         } else {
             $lead = Lead::create($formData);
-            Mail::to('smtp.mailtrap.io')->send(new SendNewMail($lead));
+            Mail::to('smtp.mailtrap@io')->send(new SendNewMail($lead));
     
             return response()->json(['success' => 'Thank you for contacting us!']);
         }
